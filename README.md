@@ -8,7 +8,9 @@ It also uses Material-UI
 # Routes
 
 `/apply` create a new record
+
 `/applications/` shows a list of records
+
 `/applications/:id` edits a given record
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
