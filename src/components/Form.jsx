@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import Input from "@material-ui/core/Input";
 class Form extends React.Component {
   onSubmit(formValues) {
     console.log("formValues");
@@ -10,7 +11,7 @@ class Form extends React.Component {
     return (
       <div className="form-group">
         <label>{field.label}</label>
-        <input type="text" {...field.input} />
+        <Input type="text" {...field.input} />
       </div>
     );
   };
