@@ -17,10 +17,12 @@ afterEach(() => {
   wrapper.unmount();
 });
 it("has an input element", () => {
-  expect(wrapper.find("input").length).toEqual(1);
+  expect(wrapper.find("input#input-amount").length).toEqual(1);
 });
 it("has a value of 'text' when onChange", () => {
-  wrapper.find("input").simulate("change", { target: { value: "text" } });
+  wrapper
+    .find("input#input-amount")
+    .simulate("change", { target: { value: "text" } });
   wrapper.update();
-  expect(wrapper.find("input").prop("value")).toEqual("text");
+  expect(wrapper.find("input#input-amount").prop("value")).toEqual("text");
 });
