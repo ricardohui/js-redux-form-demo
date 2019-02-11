@@ -13,7 +13,10 @@ class App extends Component {
         <Header />
         <Route path="/apply" render={() => <Form />} />
         <Route path="/applications" exact render={() => <List />} />
-        <Route path="/applications/:id" render={() => <Detail />} />
+        <Route
+          path="/applications/:id"
+          render={props => <Detail {...props} />}
+        />
         <Footer />
       </div>
     );
