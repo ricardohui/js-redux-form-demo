@@ -11,7 +11,7 @@ class Form extends React.Component {
     return (
       <div className="form-group">
         <label>{field.label}</label>
-        <Input type="text" {...field.input} />
+        <input type="text" {...field.input} />
       </div>
     );
   };
