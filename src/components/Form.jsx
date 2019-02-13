@@ -2,10 +2,13 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
+import * as actions from "../actions";
 class Form extends React.Component {
   onSubmit(formValues) {
+    this.props.submitForm(formValues);
     // console.log(formValues);
     // this.props.createPost(values);
   }
@@ -27,14 +30,14 @@ class Form extends React.Component {
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
             label="Family Name"
-            name="name"
+            name="lastName"
             component={this.renderTitleField}
           />
           <Field label="Email" name="email" component={this.renderTitleField} />
           <Field
             required
             label="Loan Amount"
-            name="amount"
+            name="loanAmount"
             component={this.renderTitleField}
           />
           <Field
@@ -54,6 +57,11 @@ class Form extends React.Component {
   }
 }
 
-export default reduxForm({
+const wrappedForm = reduxForm({
   form: "appForm"
 })(Form);
+
+export default connect(
+  null,
+  actions
+)(wrappedForm);
