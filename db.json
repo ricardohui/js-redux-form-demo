@@ -1,46 +1,52 @@
 {
   "applications": [
     {
-      "id": 1,
+      "id": "1",
       "loanAmount": "130000",
       "tenure": "12",
       "lastName": "Ma",
-      "email": "ma@email.com"
+      "email": "ma@email.com",
+      "status": "processing"
     },
     {
       "id": 2,
       "loanAmount": "200000",
       "tenure": "24",
       "lastName": "Chan",
-      "email": "bb222@email.com"
+      "email": "bb222@email.com",
+      "status": "approved"
     },
     {
       "id": 3,
       "loanAmount": "5000",
       "tenure": "6",
       "lastName": "Wong",
-      "email": "kitty@email.com"
+      "email": "kitty@email.com",
+      "status": "rejected"
     },
     {
       "id": 5,
       "loanAmount": "20000",
       "tenure": "3",
       "lastName": "Lee",
-      "email": "lee@email.com"
+      "email": "lee@email.com",
+      "status": "processing"
     },
     {
       "id": 4,
       "loanAmount": "40000",
       "tenure": "6",
       "lastName": "Cheung",
-      "email": "ky@aol.com"
+      "email": "ky@aol.com",
+      "status": "processing"
     },
     {
       "id": 6,
       "loanAmount": "30000",
       "tenure": "12",
       "lastName": "Lee",
-      "email": "eehaha@email.com"
+      "email": "eehaha@email.com",
+      "status": "processing"
     }
   ]
 }
