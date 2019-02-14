@@ -17,7 +17,7 @@ class List extends React.Component {
             }) applied a loan for $${app.loanAmount} and promised to repay in ${
               app.tenure
             } months. `}</Link>
-            {app.status.toUpperCase()}
+            {app.status && app.status.toUpperCase()}
           </li>
         );
       });
