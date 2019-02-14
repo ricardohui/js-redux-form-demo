@@ -19,7 +19,7 @@ class Detail extends React.Component {
     // console.log(formValues);
     // this.props.createPost(values);
   }
-  renderThisApplication = (applications, identifier) => {
+  renderThisApplication = () => {
     const { handleSubmit } = this.props;
 
     return (
@@ -47,12 +47,14 @@ class Detail extends React.Component {
   };
 
   render() {
-    const { match, applications } = this.props;
-
+    const { match, application } = this.props;
+    debugger;
     return (
       <div>
         <h1>Application {match.params.id}</h1>
-        <div>{this.renderThisApplication(applications, match.params.id)}</div>
+        <div>{this.renderThisApplication()}</div>
+        <div>Status: {this.props.application.status}</div>
+
         <Button variant="contained" color="primary">
           Approve
         </Button>
@@ -73,23 +75,21 @@ function mapStateToProps(state, ownProps) {
       applicationObj["" + app.id] = app;
       // debugger;
     });
-    if (!applicationObj[id]) {
-      return {
-        applications: state.applications
-      };
-    }
+
     return {
       applications: state.applications,
+      application: applicationObj[id],
       initialValues: {
-        lastName: applicationObj[ownProps.match.params.id].lastName,
-        loanAmount: applicationObj[ownProps.match.params.id].loanAmount,
-        tenure: applicationObj[ownProps.match.params.id].tenure,
-        email: applicationObj[ownProps.match.params.id].email
+        lastName: applicationObj[id].lastName,
+        loanAmount: applicationObj[id].loanAmount,
+        tenure: applicationObj[id].tenure,
+        email: applicationObj[id].email
       }
     };
   }
   return {
-    applications: state.applications
+    applications: [],
+    application: {}
   };
 }
 const wrappedForm = reduxForm({
