@@ -12,7 +12,16 @@ export const submitForm = formValues => async dispatch => {
   });
 };
 
+export const UPDATE_FORM = "update_form";
+export const updateForm = (formValues, id) => async dispatch => {
+  const res = await axios.put(
+    `http://localhost:3001/applications/${id}`,
+    formValues
+  );
+  dispatch({ type: UPDATE_FORM, payload: res });
+};
 export const FETCH_APPS = "fetch_apps";
+
 export const fetchApps = () => async dispatch => {
   // FIXME: read the server url in environement variable
   const res = await axios.get("http://localhost:3001/applications");

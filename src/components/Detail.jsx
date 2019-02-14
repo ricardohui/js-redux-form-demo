@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 import { Field, reduxForm, initialize } from "redux-form";
 import * as actions from "../actions";
 import ApproveOrReject from "./ApproveOrReject";
+import Button from "@material-ui/core/Button";
 class Detail extends React.Component {
   componentDidMount() {
     this.props.fetchApps();
-    initialize("appForm", { lastName: "Chan" });
   }
   renderTitleField = field => {
     // README: outside the return, you need to use field.input.name
@@ -16,7 +16,7 @@ class Detail extends React.Component {
     return <TextField id={elementID} name={field.name} {...field.input} />;
   };
   onSubmit(formValues) {
-    this.props.submitForm(formValues);
+    this.props.updateForm(formValues, this.props.match.params.id);
     // console.log(formValues);
     // this.props.createPost(values);
   }
@@ -43,6 +43,9 @@ class Detail extends React.Component {
             component={this.renderTitleField}
           />
           <Field name="status" component={ApproveOrReject} />
+          <Button type="submit" className="btn btn-primary">
+            Submit
+          </Button>
         </form>
       </div>
     );
@@ -50,7 +53,7 @@ class Detail extends React.Component {
 
   render() {
     const { match, application } = this.props;
-    debugger;
+    // debugger;
     return (
       <div>
         <h1>Application {match.params.id}</h1>
