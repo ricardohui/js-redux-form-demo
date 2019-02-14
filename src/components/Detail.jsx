@@ -66,12 +66,18 @@ class Detail extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   const { applications } = state;
+  const { id } = ownProps.match.params;
   if (applications.length > 1) {
     const applicationObj = {};
     applications.forEach(app => {
       applicationObj["" + app.id] = app;
       // debugger;
     });
+    if (!applicationObj[id]) {
+      return {
+        applications: state.applications
+      };
+    }
     return {
       applications: state.applications,
       initialValues: {
