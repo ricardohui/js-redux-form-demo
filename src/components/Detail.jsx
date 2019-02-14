@@ -1,9 +1,10 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { Field, reduxForm, initialize } from "redux-form";
 import * as actions from "../actions";
+import ApproveOrReject from "./ApproveOrReject";
 class Detail extends React.Component {
   componentDidMount() {
     this.props.fetchApps();
@@ -41,6 +42,7 @@ class Detail extends React.Component {
             name="tenure"
             component={this.renderTitleField}
           />
+          <Field name="status" component={ApproveOrReject} />
         </form>
       </div>
     );
@@ -54,13 +56,6 @@ class Detail extends React.Component {
         <h1>Application {match.params.id}</h1>
         <div>{this.renderThisApplication()}</div>
         <div>Status: {this.props.application.status}</div>
-
-        <Button variant="contained" color="primary">
-          Approve
-        </Button>
-        <Button variant="contained" color="secondary">
-          Reject
-        </Button>
       </div>
     );
   }
@@ -83,7 +78,8 @@ function mapStateToProps(state, ownProps) {
         lastName: applicationObj[id].lastName,
         loanAmount: applicationObj[id].loanAmount,
         tenure: applicationObj[id].tenure,
-        email: applicationObj[id].email
+        email: applicationObj[id].email,
+        status: applicationObj[id].status
       }
     };
   }
