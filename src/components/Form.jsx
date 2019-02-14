@@ -8,6 +8,7 @@ import FormControl from "@material-ui/core/FormControl";
 import * as actions from "../actions";
 class Form extends React.Component {
   onSubmit(formValues) {
+    //debugger;
     this.props.submitForm(formValues);
     // console.log(formValues);
     // this.props.createPost(values);
@@ -15,6 +16,7 @@ class Form extends React.Component {
   renderTitleField = field => {
     // README: outside the return, you need to use field.input.name
     const elementID = `input-${field.input.name}`;
+
     return (
       <FormControl>
         <InputLabel htmlFor={elementID}>{field.label}</InputLabel>
@@ -22,8 +24,13 @@ class Form extends React.Component {
       </FormControl>
     );
   };
+  componentDidMount() {
+    /** change the value of a status field to processing or create one if not exist. change() is a function prop passed by redux-form. */
+    this.props.change("status", "processing");
+  }
   render() {
     const { handleSubmit } = this.props;
+
     return (
       <div>
         <h1>Loan Application Form</h1>
@@ -40,12 +47,14 @@ class Form extends React.Component {
             name="loanAmount"
             component={this.renderTitleField}
           />
+
           <Field
             required
             label="Tenure"
             name="tenure"
             component={this.renderTitleField}
           />
+
           <div>
             <Button type="submit" className="btn btn-primary">
               Submit
