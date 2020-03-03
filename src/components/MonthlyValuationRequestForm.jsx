@@ -28,6 +28,10 @@ class MonthylValuationRequestForm extends React.Component {
     showSnackbar: false,
     dateOfValuation: Date.now(),
   };
+
+  atLeastOneTrue() {
+    return this.state.checkbox.filter(box => box).length > 0;
+  }
   onSubmit(formValues) {
     //debugger;
     this.props.submitForm(formValues);
@@ -50,7 +54,7 @@ class MonthylValuationRequestForm extends React.Component {
     this.props.change("status", "processing");
   }
   handleCurrentValuerChange(event, rowId) {
-    console.log(event);
+    // console.log(event);
 
     let newValuers = Object.assign(this.state.currentValuer, {});
     newValuers[rowId] = event.target.value;
@@ -184,8 +188,8 @@ class MonthylValuationRequestForm extends React.Component {
                 <td className="border px-4 py-2">
                   {this.renderCurrentValuer(1)}
                 </td>
-                <td className="border px-4 py-2">10,115,000</td>
-                <td className="border px-4 py-2">25 DEC 2019</td>
+                <td className="border px-4 py-2">6,650,000</td>
+                <td className="border px-4 py-2">19 JAN 2019</td>
               </tr>
               <tr className="bg-gray-100">
                 <td className="border px-4 py-2">
@@ -207,12 +211,15 @@ class MonthylValuationRequestForm extends React.Component {
               </tr>
             </tbody>
           </table>
-          <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8"
+          <Button
+            variant="contained"
+            color="primary"
+            disabled={!this.atLeastOneTrue()}
             onClick={this.handleDialogOpen}
           >
             Confirm
-          </button>
+          </Button>
+
           <Dialog
             open={this.state.isModalOpen}
             onClose={this.handleDialogClose}
