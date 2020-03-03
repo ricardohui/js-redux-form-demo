@@ -1,5 +1,5 @@
 {
-  "applications": [
+  "loans": [
     {
       "id": "1",
       "loanAmount": "130000",
@@ -48,5 +48,6 @@
       "email": "eehaha@email.com",
       "status": "processing"
     }
-  ]
+  ],
+  "properties": [{}]
 }

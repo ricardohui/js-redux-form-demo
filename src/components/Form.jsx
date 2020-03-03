@@ -2,9 +2,9 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
-import { connect } from "react-redux";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
+import { connect } from "react-redux";
 import * as actions from "../actions";
 class Form extends React.Component {
   onSubmit(formValues) {
@@ -67,10 +67,7 @@ class Form extends React.Component {
 }
 
 const wrappedForm = reduxForm({
-  form: "appForm"
+  form: "appForm",
 })(Form);
 
-export default connect(
-  null,
-  actions
-)(wrappedForm);
+export default connect(null, actions)(wrappedForm);

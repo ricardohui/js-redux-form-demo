@@ -12,11 +12,9 @@ class List extends React.Component {
       return applications.map(app => {
         return (
           <li key={app.email}>
-            <Link to={"/applications/" + app.id}>{`${app.lastName} (email: ${
-              app.email
-            }) applied a loan for $${app.loanAmount} and promised to repay in ${
-              app.tenure
-            } months. `}</Link>
+            <Link
+              to={"/applications/" + app.id}
+            >{`${app.lastName} (email: ${app.email}) applied a loan for $${app.loanAmount} and promised to repay in ${app.tenure} months. `}</Link>
             {app.status && app.status.toUpperCase()}
           </li>
         );
@@ -27,7 +25,7 @@ class List extends React.Component {
   render() {
     return (
       <div>
-        <h1>List of Loan Applications</h1>
+        <h1>List of Loans</h1>
         <ol>{this.renderApplications()}</ol>
       </div>
     );
@@ -37,7 +35,4 @@ class List extends React.Component {
 function mapStateToProps(state) {
   return { applications: state.applications };
 }
-export default connect(
-  mapStateToProps,
-  { fetchApps }
-)(List);
+export default connect(mapStateToProps, { fetchApps })(List);
